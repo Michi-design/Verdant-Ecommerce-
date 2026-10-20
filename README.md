@@ -15,12 +15,12 @@ Create a production build with `npm run build`, or preview it locally with `npm 
 
 ## Publish on GitHub Pages
 
-1. Create a GitHub repository and upload this project, including `package-lock.json` and `.github/workflows/deploy.yml`.
+1. Create a GitHub repository and upload this project, including `package-lock.json` and `.github/workflows/static.yml`. If the repository already contains a GitHub-created `static.yml`, replace it with this project's version.
 2. Push the project to the repository's `main` branch. The GitHub Actions workflow installs dependencies, builds the site, and deploys the `dist` folder.
 3. In the repository, open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**.
 4. After the workflow completes, open the Pages URL shown in its deployment job. Project sites use the repository path, which the build configures automatically.
 
-The app uses hash-based URLs (for example, `/#/shop`) so client-side pages also work when refreshed on GitHub Pages. If the repository uses a branch other than `main`, update the branch in `.github/workflows/deploy.yml`. A custom domain can be configured in GitHub Pages settings.
+The app uses hash-based URLs (for example, `/#/shop`) so client-side pages also work when refreshed on GitHub Pages. If the repository uses a branch other than `main`, update the branch in `.github/workflows/static.yml`. A custom domain can be configured in GitHub Pages settings.
 
 GitHub Pages hosts static files only. This storefront still uses demo products and browser-local cart/wishlist data; it does not process orders, payments, newsletter signups, or contact messages. Connect a real commerce backend before accepting customers or payments.
 
@@ -31,7 +31,7 @@ GitHub Pages hosts static files only. This storefront still uses demo products a
 - `src/context/StoreContext.jsx` — browser-local cart and wishlist state.
 - `src/App.jsx` — routes, shared navigation, storefront pages, user interactions, and route-aware page titles and descriptions.
 - `vite.config.js` — Vite build base path for local development and GitHub Pages project sites.
-- `.github/workflows/deploy.yml` — build and deploy the static site to GitHub Pages.
+- `.github/workflows/static.yml` — build and deploy the static site to GitHub Pages.
 - `src/styles.css` — brand tokens, page styling, responsive layouts, and reduced-motion support.
 
 The demo catalog and state are not authoritative store data. Cart and wishlist data are browser-specific and stored in local storage when the browser permits it. Prices use `VITE_CURRENCY` (defaults to `USD`); product inventory and currency have not been confirmed for a real store.
